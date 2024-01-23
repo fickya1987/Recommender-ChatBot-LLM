@@ -411,17 +411,4 @@ if prompt := st.chat_input("What is up?") or sugg_prompt:
     st.session_state.messages_st.append({"role": "assistant", "content": response['content']})
         
 
-with st.sidebar:
-    col1, col2 = st.columns(2)
-    with col1:
-        db=MySQLDatabase()
-        st.metric("Total Bookings Today", db.get_row_count('booking'), db.get_row_count('booking'))
-    
-    with col2: 
-        db=MySQLDatabase()
-        st.metric("Total Cancellations Today", db.cancelled_count(), db.cancelled_count())
-    
-    st.subheader("These are the records of the booking made")
-    st.caption("Live quering from MySQl DB")
-    db = MySQLDatabase()
-    st.dataframe(db.fetch_all_rows('booking'))
+
