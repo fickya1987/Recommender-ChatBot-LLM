@@ -6,7 +6,6 @@ from termcolor import colored
 import os 
 import streamlit as st
 from dotenv import load_dotenv
-from mysql_class import MySQLDatabase
 load_dotenv()
 
 st.set_page_config(page_title="Lodge Booking Assistant", page_icon="🏠", layout="wide", initial_sidebar_state="expanded")
@@ -348,7 +347,7 @@ def chat_tools_func(query):
 #         st.write("Second Response:", second['content'])
 
 
-st.title("Lodge Booking Assistant")
+st.title("Gaman Place2Joy AI")
 if "myimage" not in st.session_state:
     st.session_state.myimage = True
 
