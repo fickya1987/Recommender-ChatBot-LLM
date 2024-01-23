@@ -59,6 +59,108 @@ def pretty_print_conversation(messages):
             print(colored(f"function ({message['name']}): {message['content']}\n", role_to_color[message["role"]]))
 
 
+## Functions
+def book_tickets(name, location, arrival_date, departure_date, suite_category, suite_sub_category):
+    mdb = MySQLDatabase()
+    try:
+        print('--'*30)
+        print(name, location, arrival_date, departure_date, suite_category, suite_sub_category)
+        print('--'*30)
+        b_id= mdb.insert_data('booking', ['name', 'location','arrival_date', 'depart_date', 'category', 'subcategory', 'is_active'],
+                        [name, location, arrival_date, departure_date, suite_category, suite_sub_category, 1])
+    except Exception as e:
+        return f"some error occured while making booking: {e}"
+    return f"You Booking is Successful! Your Booking Reference ID is: BNO_GWR_{b_id}. Your passes are shared on email."
+
+def cancel_booking(booking_number, **kwargs):
+    mdb = MySQLDatabase()
+    try:
+        booking_number = booking_number[8:]
+        print(booking_number)
+        b_id= mdb.update_data('booking', 'is_cancel', 1, 'b_id' , booking_number)
+    except Exception as e:
+        return f"some error occured while making booking: {e}"
+    return f"Your Booking with Booking Number: BNO_GWR_{booking_number} is cancelled successfully! You will receive confirmation email shortly."
+
+#this will be the function to edit bookings
+def edit_booking(booking_number, **kwargs):
+    mdb = MySQLDatabase()
+    try:
+        booking_number = booking_number[8:]
+        print(booking_number)
+        b_id= mdb.update_data('booking', 'is_cancel', 1, 'b_id' , booking_number)
+    except Exception as e:
+        return f"some error occured while making booking: {e}"
+    return f"Your Booking with Booking Number: BNO_GWR_{booking_number} is cancelled successfully! You will receive confirmation email shortly."
+## Tools
+tools = [
+    {
+        "type": "function",
+        "function": {
+            "name": "book_tickets",
+            "description": "When user is ready to finalize the booking only then use this function. Otherwise keep interacting with user.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "Full name of person, eg: Sarmad Afzal",
+                    },
+                    "location": {
+                        "type": "string",
+                        "description": "Location of the resort/lodge, eg: Gurnee, IL",
+                    },
+                    "arrival_date" : {
+                        "type" : "string",
+                        "format" : "datetime",
+                        "description": "Date of arrival of the customer at resort, eg: 12 Aug, 2023"
+                    },
+                    "departure_date" : {
+                        "type" : "string",
+                        "format" : "datetime",
+                        "description": "Date of departure of the customer from the resort, eg 30 Aug, 2023"
+                    },
+                    "suite_category" : {
+                        "type" : "string",
+                        "enum" : ["Standard", "Themed"],
+                        "description" : "Type of the suite, for eg: Standard or Themed"
+                    },
+                    "suite_sub_category": {
+                        "type": "string",
+                        "enum" : ['Deluxe Family Suite', 'Family Suite', 'Deluxe Queen Suite', 'Wolf Den Suite', 'Junior Cabin Suite'],
+                        "description" : "Sub-type or sub-category of the suite for eg: Deluxe Family Suite or Wold Den Suite"
+                    } 
+                },
+                "required": ["name", "location", "arrival_date", "departure_date", "suite_category", "suite_sub_category"],
+            },
+        },
+
+        
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "cancel_booking",
+            "description": "Usefulful when user ask to cancel the booking. You must have Booking Number beforehand asked from user to call this function.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "booking_number": {
+                        "type": "string",
+                        "description": "Booking Number, it is the reference number to cancel the booking.",
+                    },
+                },
+                "required": ["booking_number"],
+            },
+        },
+
+        
+    }
+]
+
+if 'messages' not in st.session_state:
+        st.session_state.messages = ['0']
+
 def chat_tools_func(query):
 
     System_prompt = f"""
@@ -246,7 +348,7 @@ def chat_tools_func(query):
 #         st.write("Second Response:", second['content'])
 
 
-st.title("Gaman Place2Joy AI")
+st.title("Lodge Booking Assistant")
 if "myimage" not in st.session_state:
     st.session_state.myimage = True
 
@@ -309,3 +411,18 @@ if prompt := st.chat_input("What is up?") or sugg_prompt:
     # Add assistant response to chat history
     st.session_state.messages_st.append({"role": "assistant", "content": response['content']})
         
+
+with st.sidebar:
+    col1, col2 = st.columns(2)
+    with col1:
+        db=MySQLDatabase()
+        st.metric("Total Bookings Today", db.get_row_count('booking'), db.get_row_count('booking'))
+    
+    with col2: 
+        db=MySQLDatabase()
+        st.metric("Total Cancellations Today", db.cancelled_count(), db.cancelled_count())
+    
+    st.subheader("These are the records of the booking made")
+    st.caption("Live quering from MySQl DB")
+    db = MySQLDatabase()
+    st.dataframe(db.fetch_all_rows('booking'))
