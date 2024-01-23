@@ -352,7 +352,7 @@ if "myimage" not in st.session_state:
     st.session_state.myimage = True
 
 if st.session_state.myimage:
-    st.image("images/image.png")
+    st.image("images/logo_gaman_2024.png")
 
 if "sugg_qns" not in st.session_state:
     st.session_state.sugg_qns = True
