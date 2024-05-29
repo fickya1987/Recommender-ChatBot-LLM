@@ -8,7 +8,7 @@ import streamlit as st
 from dotenv import load_dotenv
 load_dotenv()
 
-st.set_page_config(page_title="Lodge Booking Assistant", page_icon="🏠", layout="wide", initial_sidebar_state="expanded")
+st.set_page_config(page_title="Akses Pasar Bisnis UMKM Garuda Mandiri", page_icon="🏠", layout="wide", initial_sidebar_state="expanded")
 GPT_MODEL = "gpt-4-1106-preview"
 
 openai.api_key = os.environ["OPENAI_API_KEY"]
@@ -163,86 +163,24 @@ if 'messages' not in st.session_state:
 def chat_tools_func(query):
 
     System_prompt = f"""
-    You are an AI Travel Booking Assistant of Mystic Pines Resort. You will be assisting a customer for making booking.    
-    Do directly ask for books, interact in a creative way. Show them what options we have for the lodges, ask if they want to see the images and detail features. Only then ask for booking.
+
+    Anda adalah asistant cerdas untuk aplikasi yang bernama GAMAN (singkatan dari Garuda Mandiri). Anda akan membantu pengguna aplikasi ini, terutama wirausaha UMKM dalam mencari akses pasar untuk menjual produk mereka.
+
+    Apabila ada pertanyaan, mohon sesuaikan jawabannya dengan jawaban dan format yang telah tersedia.
+    
+    Pertanyaan:Saya berwirausaha dalam resto seafood di Jawa Timur. Saya sedang mencari nelayan atau supplier ikan di area Pacitan Jawa Timur. Mohon berikan informasi mengenai supplier atau nelayan yang ada di Pacitan yang memproduksi ikan dan apabila bisa, mohon berikan nomor kontak dan detail bisnis supplier tersebut!
+    Jawaban: Kami memiliki beberapa akses terkait supplier atau nelayan ikan di area Pacitan Jawa Timur. Ada Pak Tokid, ketua kelompok tani Tri Manunggal di desa Sendang Pacitan. Beliau dan kelompoknya biasanya melakukan penangkapan ikan dengan spesifikasi ikan tongkol, ikan layur, Bawal, Kakap Merah, Udang Barong, Ubur-Ubur dan Impun. Beliau mengetuai kelompok Tri Manuggal yang berjumlah sekitar 35 orang. Beliau biasanya menggunakan alat-alat seperti pancing, rawe, parel, gondrong,krendet,gillnet dan lainnya. Apabila ingin menghubungi beliau, bisa kontak di WA +62 8523390xxxxxx 
+    
+    Pertanyaan: Selain kelompok nelayan yang telah disebutkan, apakah ada supplier ikan lain di Pacitan? Berikan detail yang sama!
+    Jawaban: Kami memperoleh supplier ikan lain di Pacitan. Mujianta,  ketua dari kelompok Tawang Sari. Mujianta sering melakukan penangkapan ikan di area teluk Tawang Pacitan. Hasil tangkapannya udang, gurita dan hasil ikan laut. Alat-alat yang dipakai oleh Mujianta adalah Perahu motor tempel sebanyak 21 unit, pancing rawai berjumlah 65 unit dan jaring insang berkisar 105 unit. Apabila Anda ingin menghubungi pak Mujianta, dapat menghubungi di +62877517xxxxx.
 
 
-    Following are details about the suites offered at Great Wold Lodge. Always display them in bullet points.
-    There are 2 different types of suites and each has sub type / sub category with respective features:
-    1 - Standard
-        a - Deluxe Family Suite
-            Features:
-                Sleeps 4-6
-                Balcony suite includes two queen beds as well as a semi-private living area with a twin-size sofa sleeper.
-
-                2 Queen beds
-                1 Twin sleeper sofa
-                1 Semi-private living area
-                1 Balcony/Patio
-                1 Full bath
-                TV
+    Pertanyaan: Berapa produksi ikan yang diperoleh oleh Pak Tokid dan Pak Mujianti per hari di Pacitan?
+    Jawaban: Pak Tokid dan kelompoknya dapat menghasilkan sekitar 50 ton perhari, sedangkan pak Mujianta dapat menangkap sebanyak 30 ton per hari
+   
+ 
             Details URL: https://www.enchantedgroveresort.com/suites/standard/deluxe-family-suite-balcony 
             Image URL: [https://www.bestwesternmidway.com/wp-content/uploads/2018/03/doublebedroom-1024x576.jpg, https://libraryhotel.com/_novaimg/galleria/1332639.jpg ,https://www.grandwailea.com/sites/default/files/styles/gallery/public/2023-05/King%20Garden%20View.jpg]
-
-        b - Family Haven Suite
-            Features:
-                Sleeps 4-6
-                Suite featuring two queen beds as well as a living area.
-
-                2 Queen beds
-                1 Full sleeper sofa
-                1 Full bath
-                1 TV
-                Hair dryer
-                Coffee maker
-            Details URL: https://www.enchantedgroveresort.com/suites/standard/family-haven-suite
-            Image URL: [https://www.bestwesternmidway.com/wp-content/uploads/2018/03/doublebedroom-1024x576.jpg, https://libraryhotel.com/_novaimg/galleria/1332639.jpg ,https://www.grandwailea.com/sites/default/files/styles/gallery/public/2023-05/King%20Garden%20View.jpg]
-
-        c - Deluxe Forest Suite
-            Features:
-                Sleeps 4-5
-                Standard suite includes two queen beds as well as a living area with a twin-size sofa sleeper.
-
-                2 Queen beds
-                1 Twin sleeper sofa
-                1 Full bath
-                TV
-                Mini-fridge
-                Coffee maker
-            Details URL: https://www.enchantedgroveresort.com/suites/standard/deluxe-forest-suite
-            Image URL: [https://www.bestwesternmidway.com/wp-content/uploads/2018/03/doublebedroom-1024x576.jpg, https://libraryhotel.com/_novaimg/galleria/1332639.jpg ,https://www.grandwailea.com/sites/default/files/styles/gallery/public/2023-05/King%20Garden%20View.jpg]
-
-    2 - Themed
-        a - Fairy Tale Retreat
-            Features: 
-                Sleeps 4-6
-                Standard suite featuring a magical fairy tale-themed sleeping area.
-                1 Queen bed
-                1 Full sleeper sofa
-                1 Bunk bed
-                1 Full bath
-                2 TVs
-                Mini-fridge
-            Details URL: https://www.enchantedgroveresort.com/suites/themed/fairy-tale-retreat
-            Image URL: [https://i.ibb.co/mSPdv7J/fairytale1.jpg, https://i.ibb.co/9WmW9Yb/fairytale2.jpg]
-
-        b - Woodland Cabin Escape
-            Features:
-                Sleeps 4-6
-                Standard suite features a cozy woodland cabin-themed sleeping area.
-
-                1 Queen bed
-                1 Day bed
-                1 Bunk bed
-                1 Twin sleeper sofa
-                1 Full bath
-                2 TVs
-            Details URL: https://www.enchantedgroveresort.com/suites/themed/woodland-cabin-escape
-            Image URL: [https://i.ibb.co/mSPdv7J/fairytale1.jpg, https://i.ibb.co/9WmW9Yb/fairytale2.jpg]
-
-    
-    Don't make assumptions about what values to plug into functions. Ask for clarification if a user request is ambiguous.
-    Before finalizing the booking and calling the function. Make sure to ask the user for confirmation by showing all the details.
     """
 
     
@@ -361,17 +299,17 @@ sugg_prompt = None
 if st.session_state.sugg_qns:
     s1, s2, s3 = st.columns([1,1,1])
     with s1:
-        ss1 = st.button("Recommend me lodges for Christmas")
+        ss1 = st.button("Mohon berikan informasi mengenai supplier atau nelayan yang ada di Pacitan yang memproduksi ikan dan apabila bisa, mohon berikan nomor kontak dan detail bisnis supplier tersebut!")
         if ss1: 
-            sugg_prompt = "Recommend me lodges for Christmas"
+            sugg_prompt = "Mohon berikan informasi mengenai supplier atau nelayan yang ada di Pacitan yang memproduksi ikan dan apabila bisa, mohon berikan nomor kontak dan detail bisnis supplier tersebut!"
     with s2:
-        ss2 = st.button("I am interest in themed stay, show me some options")
+        ss2 = st.button("Selain kelompok nelayan yang telah disebutkan, apakah ada supplier ikan lain di Pacitan? Berikan detail yang sama!")
         if ss2:
-            sugg_prompt = "I am interest in themed stay, show me some options"
+            sugg_prompt = "Selain kelompok nelayan yang telah disebutkan, apakah ada supplier ikan lain di Pacitan? Berikan detail yang sama!"
     with s3:
-        ss3 = st.button("Show me images of Deluxe Queen Suite")
+        ss3 = st.button("Berapa produksi ikan yang diperoleh oleh Pak Tokid dan Pak Mujianti per hari di Pacitan?")
         if ss3:
-            sugg_prompt = "Show me images of Deluxe Queen Suite"
+            sugg_prompt = "Berapa produksi ikan yang diperoleh oleh Pak Tokid dan Pak Mujianti per hari di Pacitan?"
 
 # React to user input
 if prompt := st.chat_input("What is up?") or sugg_prompt:
