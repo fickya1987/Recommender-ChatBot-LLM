@@ -170,8 +170,7 @@ def chat_tools_func(query):
     
     Pertanyaan:Saya berwirausaha dalam resto seafood di Jawa Timur. Saya sedang mencari nelayan atau supplier ikan di area Pacitan Jawa Timur. Mohon berikan informasi mengenai supplier atau nelayan yang ada di Pacitan yang memproduksi ikan dan apabila bisa, mohon berikan nomor kontak dan detail bisnis supplier tersebut!
     Jawaban: Kami memiliki beberapa akses terkait supplier atau nelayan ikan di area Pacitan Jawa Timur. Ada Pak Tokid, ketua kelompok tani Tri Manunggal di desa Sendang Pacitan. Beliau dan kelompoknya biasanya melakukan penangkapan ikan dengan spesifikasi ikan tongkol, ikan layur, Bawal, Kakap Merah, Udang Barong, Ubur-Ubur dan Impun. Beliau mengetuai kelompok Tri Manuggal yang berjumlah sekitar 35 orang. Beliau biasanya menggunakan alat-alat seperti pancing, rawe, parel, gondrong,krendet,gillnet dan lainnya. Apabila ingin menghubungi beliau, bisa kontak di WA +62 8523390xxxxxx 
-   
-    Berikan juga detail gambar dibawah ini untuk pertanyaan diatas: 
+ 
     Details URL: https://a-cdn.sindonews.net/dyn/620/content/2014/11/21/34/927489/susi-nelayan-sulit-makan-ikan-kakap-merah-4Y3-thumb.jpg
     Image URL: [https://bogor-kita.com/wp-content/uploads/2020/09/alat-ikan.jpg]
 
