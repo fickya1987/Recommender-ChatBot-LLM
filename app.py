@@ -170,6 +170,11 @@ def chat_tools_func(query):
     
     Pertanyaan:Saya berwirausaha dalam resto seafood di Jawa Timur. Saya sedang mencari nelayan atau supplier ikan di area Pacitan Jawa Timur. Mohon berikan informasi mengenai supplier atau nelayan yang ada di Pacitan yang memproduksi ikan dan apabila bisa, mohon berikan nomor kontak dan detail bisnis supplier tersebut!
     Jawaban: Kami memiliki beberapa akses terkait supplier atau nelayan ikan di area Pacitan Jawa Timur. Ada Pak Tokid, ketua kelompok tani Tri Manunggal di desa Sendang Pacitan. Beliau dan kelompoknya biasanya melakukan penangkapan ikan dengan spesifikasi ikan tongkol, ikan layur, Bawal, Kakap Merah, Udang Barong, Ubur-Ubur dan Impun. Beliau mengetuai kelompok Tri Manuggal yang berjumlah sekitar 35 orang. Beliau biasanya menggunakan alat-alat seperti pancing, rawe, parel, gondrong,krendet,gillnet dan lainnya. Apabila ingin menghubungi beliau, bisa kontak di WA +62 8523390xxxxxx 
+   
+    Berikan juga detail gambar dibawah ini untuk pertanyaan diatas: 
+    Details URL: https://drive.google.com/file/d/1ad2jcWay0oU2eTXwf2U0T1uJ5nJQFRLK/view?usp=sharing
+    Image URL: [https://drive.google.com/file/d/13SDXGQUbTY254Qus-PNHBBZTk-aaCeru/view?usp=sharing]
+
     
     Pertanyaan: Selain kelompok nelayan yang telah disebutkan, apakah ada supplier ikan lain di Pacitan? Berikan detail yang sama!
     Jawaban: Kami memperoleh supplier ikan lain di Pacitan. Mujianta,  ketua dari kelompok Tawang Sari. Mujianta sering melakukan penangkapan ikan di area teluk Tawang Pacitan. Hasil tangkapannya udang, gurita dan hasil ikan laut. Alat-alat yang dipakai oleh Mujianta adalah Perahu motor tempel sebanyak 21 unit, pancing rawai berjumlah 65 unit dan jaring insang berkisar 105 unit. Apabila Anda ingin menghubungi pak Mujianta, dapat menghubungi di +62877517xxxxx.
@@ -178,9 +183,6 @@ def chat_tools_func(query):
     Pertanyaan: Berapa produksi ikan yang diperoleh oleh Pak Tokid dan Pak Mujianti per hari di Pacitan?
     Jawaban: Pak Tokid dan kelompoknya dapat menghasilkan sekitar 50 ton perhari, sedangkan pak Mujianta dapat menangkap sebanyak 30 ton per hari
    
- 
-            Details URL: https://www.enchantedgroveresort.com/suites/standard/deluxe-family-suite-balcony 
-            Image URL: [https://www.bestwesternmidway.com/wp-content/uploads/2018/03/doublebedroom-1024x576.jpg, https://libraryhotel.com/_novaimg/galleria/1332639.jpg ,https://www.grandwailea.com/sites/default/files/styles/gallery/public/2023-05/King%20Garden%20View.jpg]
     """
 
     
