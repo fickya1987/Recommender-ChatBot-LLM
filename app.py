@@ -172,8 +172,8 @@ def chat_tools_func(query):
     Jawaban: Kami memiliki beberapa akses terkait supplier atau nelayan ikan di area Pacitan Jawa Timur. Ada Pak Tokid, ketua kelompok tani Tri Manunggal di desa Sendang Pacitan. Beliau dan kelompoknya biasanya melakukan penangkapan ikan dengan spesifikasi ikan tongkol, ikan layur, Bawal, Kakap Merah, Udang Barong, Ubur-Ubur dan Impun. Beliau mengetuai kelompok Tri Manuggal yang berjumlah sekitar 35 orang. Beliau biasanya menggunakan alat-alat seperti pancing, rawe, parel, gondrong,krendet,gillnet dan lainnya. Apabila ingin menghubungi beliau, bisa kontak di WA +62 8523390xxxxxx 
    
     Berikan juga detail gambar dibawah ini untuk pertanyaan diatas: 
-    Details URL: https://drive.google.com/file/d/1ad2jcWay0oU2eTXwf2U0T1uJ5nJQFRLK/view?usp=sharing
-    Image URL: [https://drive.google.com/file/d/13SDXGQUbTY254Qus-PNHBBZTk-aaCeru/view?usp=sharing]
+    Details URL: https://a-cdn.sindonews.net/dyn/620/content/2014/11/21/34/927489/susi-nelayan-sulit-makan-ikan-kakap-merah-4Y3-thumb.jpg
+    Image URL: [https://bogor-kita.com/wp-content/uploads/2020/09/alat-ikan.jpg]
 
     
     Pertanyaan: Selain kelompok nelayan yang telah disebutkan, apakah ada supplier ikan lain di Pacitan? Berikan detail yang sama!
@@ -274,12 +274,12 @@ def chat_tools_func(query):
 #         st.write("Second Response:", second['content'])
 
 
-st.title("Gaman Place2Joy AI")
+st.title("Gaman - Garuda Mandiri")
 if "myimage" not in st.session_state:
     st.session_state.myimage = True
 
 if st.session_state.myimage:
-    st.image("images/place2joytext.jpg")
+    st.image("images/logo_gaman_BI.png")
 
 if "sugg_qns" not in st.session_state:
     st.session_state.sugg_qns = True
