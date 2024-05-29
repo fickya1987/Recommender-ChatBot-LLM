@@ -298,20 +298,6 @@ for messages_st in st.session_state.messages_st:
 
 sugg_prompt = None
 
-if st.session_state.sugg_qns:
-    s1, s2, s3 = st.columns([1,1,1])
-    with s1:
-        ss1 = st.button("Mohon berikan informasi mengenai supplier atau nelayan yang ada di Pacitan yang memproduksi ikan dan apabila bisa, mohon berikan nomor kontak dan detail bisnis supplier tersebut!")
-        if ss1: 
-            sugg_prompt = "Mohon berikan informasi mengenai supplier atau nelayan yang ada di Pacitan yang memproduksi ikan dan apabila bisa, mohon berikan nomor kontak dan detail bisnis supplier tersebut!"
-    with s2:
-        ss2 = st.button("Selain kelompok nelayan yang telah disebutkan, apakah ada supplier ikan lain di Pacitan? Berikan detail yang sama!")
-        if ss2:
-            sugg_prompt = "Selain kelompok nelayan yang telah disebutkan, apakah ada supplier ikan lain di Pacitan? Berikan detail yang sama!"
-    with s3:
-        ss3 = st.button("Berapa produksi ikan yang diperoleh oleh Pak Tokid dan Pak Mujianti per hari di Pacitan?")
-        if ss3:
-            sugg_prompt = "Berapa produksi ikan yang diperoleh oleh Pak Tokid dan Pak Mujianti per hari di Pacitan?"
 
 # React to user input
 if prompt := st.chat_input("What is up?") or sugg_prompt:
