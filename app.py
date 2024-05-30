@@ -273,7 +273,7 @@ def chat_tools_func(query):
 #         st.write("Second Response:", second['content'])
 
 
-st.title("Gaman - Garuda Mandiri")
+st.title("Akses Pasar UMKM Gaman - Garuda Mandiri")
 if "myimage" not in st.session_state:
     st.session_state.myimage = True
 
