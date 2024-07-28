@@ -8,7 +8,7 @@ import streamlit as st
 from dotenv import load_dotenv
 load_dotenv()
 
-st.set_page_config(page_title="Akses Pasar Bisnis UMKM Garuda Mandiri", page_icon="🏠", layout="wide", initial_sidebar_state="expanded")
+st.set_page_config(page_title="Akses Pasar Bisnis UMKM", page_icon="🏠", layout="wide", initial_sidebar_state="expanded")
 GPT_MODEL = "gpt-4-1106-preview"
 
 openai.api_key = os.environ["OPENAI_API_KEY"]
@@ -273,12 +273,12 @@ def chat_tools_func(query):
 #         st.write("Second Response:", second['content'])
 
 
-st.title("Akses Pasar UMKM Gaman - Garuda Mandiri")
+st.title("Akses Pasar UMKM")
 if "myimage" not in st.session_state:
     st.session_state.myimage = True
 
 if st.session_state.myimage:
-    st.image("images/logo_gaman_BI_02.png")
+    st.image("images/logo_gaman_2024.png")
 
 if "sugg_qns" not in st.session_state:
     st.session_state.sugg_qns = True
