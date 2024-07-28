@@ -8,7 +8,7 @@ import streamlit as st
 from dotenv import load_dotenv
 load_dotenv()
 
-st.set_page_config(page_title="Akses Pasar Bisnis UMKM", page_icon="🏠", layout="wide", initial_sidebar_state="expanded")
+st.set_page_config(page_title="Small Medium Enterprises (SMEs) Market Acesss", page_icon="🏠", layout="wide", initial_sidebar_state="expanded")
 GPT_MODEL = "gpt-4-1106-preview"
 
 openai.api_key = os.environ["OPENAI_API_KEY"]
